@@ -1,0 +1,28 @@
+<form class="example-form" [formGroup]="formGroup" (submit)="save()">
+<h2 mat-dialog-title>Guardar nota</h2>
+<mat-dialog-content class="mat-typography">
+  <mat-form-field class="example-full-width">
+    <mat-label>Título</mat-label>
+    <input matInput placeholder="Ingrese un titulo" formControlName="title">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Descripcion</mat-label>
+    <textarea matInput placeholder="Ingrese una descripcion." formControlName="description"></textarea>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Seleccione Categoria</mat-label>
+    <select matNativeControl formControlName="categoryId">
+      <option value="0" selected>--Seleccionar--</option>
+      @for (category of categories; track category) {
+        <option [value]="category.id">{{category.name}}</option>
+      }
+    </select>
+  </mat-form-field>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button type="submit" mat-button>Guardar</button>
+</mat-dialog-actions>
+</form>
